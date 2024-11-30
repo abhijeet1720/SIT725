@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Manager</title>
+  <!-- Import Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .task-list { margin-top: 20px; }
+    footer { margin-top: 50px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper blue">
+      <a href="#" class="brand-logo center">Task Manager</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h5 class="center-align">Manage Your Tasks</h5>
+
+    <!-- Task Input -->
+    <form id="taskForm">
+      <div class="input-field">
+        <input id="taskInput" type="text" class="validate" required>
+        <label for="taskInput">Enter a Task</label>
+      </div>
+      <button class="btn blue" type="submit">Add Task</button>
+    </form>
+
+    <!-- Task List -->
+    <ul class="collection task-list" id="taskList"></ul>
+  </div>
+
+  <footer class="page-footer blue">
+    <div class="container">
+      <p class="center-align white-text">© 2024 Task Manager</p>
+    </div>
+  </footer>
+
+  <!-- Import Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const taskForm = document.getElementById("taskForm");
+      const taskList = document.getElementById("taskList");
+
+      taskForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const task = document.getElementById("taskInput").value;
+        if (task) {
+          const listItem = document.createElement("li");
+          listItem.className = "collection-item";
+          listItem.innerText = task;
+          taskList.appendChild(listItem);
+          document.getElementById("taskInput").value = "";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
